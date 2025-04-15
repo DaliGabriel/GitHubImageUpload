@@ -44,12 +44,18 @@ A modern Next.js application that allows users to upload images directly to a Gi
 
 4. **Configure environment variables**
    Create a `.env.local` file in the root directory with the following content:
-   ```
-   NEXT_PUBLIC_GITHUB_OWNER=your-github-username
-   NEXT_PUBLIC_GITHUB_REPO=your-repo-name
+   ```env
+   # GitHub Configuration
+   NEXT_PUBLIC_GITHUB_OWNER=DaliGabriel
+   NEXT_PUBLIC_GITHUB_REPO=GitHubImageUpload
    NEXT_PUBLIC_GITHUB_TOKEN=your-github-personal-access-token
    ```
-   Replace the placeholder values with your actual GitHub information.
+   
+   Important notes about environment variables:
+   - Replace `your-github-personal-access-token` with your actual GitHub token
+   - The `.env.local` file is automatically ignored by git
+   - Never commit your `.env.local` file or share your GitHub token
+   - For production deployment, set these variables in your hosting platform's environment settings
 
 5. **Start the development server**
    ```bash
@@ -78,7 +84,8 @@ GitHubImageUpload/
 │   │       └── githubImageUpload.ts  # GitHub upload utility
 │   └── types/
 │       └── githubImageUploader.ts    # TypeScript interfaces
-├── .env.local                    # Environment variables
+├── .env.local                    # Environment variables (git-ignored)
+├── .gitignore                   # Git ignore file
 ├── package.json                  # Project dependencies
 └── README.md                     # Project documentation
 ```
@@ -100,6 +107,7 @@ GitHubImageUpload/
 - File type validation prevents non-image uploads
 - File size limits prevent large uploads
 - All sensitive information is kept in `.env.local` which is git-ignored
+- Never commit or share your `.env.local` file or GitHub token
 
 ## Contributing
 
